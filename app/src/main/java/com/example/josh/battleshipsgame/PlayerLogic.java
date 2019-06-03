@@ -20,6 +20,9 @@ public class PlayerLogic extends BattleshipGameBase<BattleshipGameBase.ShipData>
         this.ships = ships;
     }
 
+    /*
+    Takes the players shot coordinates and works out if it was a hit or a miss.
+     */
     @Override
     public int currentGuessAt(int column, int row) {
         if (playerGrid[column][row] == -1) {
@@ -36,7 +39,9 @@ public class PlayerLogic extends BattleshipGameBase<BattleshipGameBase.ShipData>
         return 0;
     }
 
-    //Checks to see if a player has sunk all of the opponents ships
+    /*
+    Checks to see if a player has sunk all of the opponents ships
+     */
     public int checkForWinner() {
         //Finds out the total hits needed to sink entire fleet
         for (int i = 0; i < shipSizes.length; i++) {
@@ -60,6 +65,11 @@ public class PlayerLogic extends BattleshipGameBase<BattleshipGameBase.ShipData>
         return 0;
     }
 
+    /*
+    This method loops through all of the players placed ships and adds them to the players
+    2D array. It checks if the ship is horizontal or not and places it in the array according
+     according to its orientation.
+     */
     public void setPlayersShips() {
         //Loops through all of the ships
         for (ShipData ship : ships) {
@@ -75,7 +85,10 @@ public class PlayerLogic extends BattleshipGameBase<BattleshipGameBase.ShipData>
         }
     }
 
-    //Places the players ships in the place where they did in the setup screen
+    /*/
+    Places the players ships in the place where they did in the setup screen. It checks to ensure
+    that the ships that are placed are not overlapping and fit into the game grid correctly.
+     */
     public void placePlayersShips(int column, int row) {
         Random random = new Random();
         int shipCol;
@@ -154,7 +167,9 @@ public class PlayerLogic extends BattleshipGameBase<BattleshipGameBase.ShipData>
 
     }
 
-    //Sets up the players array
+    /*
+    Initialises the players 2D array
+     */
     public void createPlayerArray(int column, int row) {
         //Create the gameGrid[] the same size as the game grid
         for (int c = 0; c < column; c++) {

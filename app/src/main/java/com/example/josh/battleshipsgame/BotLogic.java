@@ -19,6 +19,10 @@ public class BotLogic extends BattleshipGameBase<BattleshipGameBase.ShipData> {
         this.ships = ships;
     }
 
+    /*
+    Method that takes the bots current guess and checks to see if it was a valid shot and hit
+    one of the players ships
+     */
     @Override
     public int currentGuessAt(int column, int row) {
         if (botGrid[column][row] == -1) {
@@ -40,6 +44,10 @@ public class BotLogic extends BattleshipGameBase<BattleshipGameBase.ShipData> {
         return 0;
     }
 
+    /*
+    Method that places the bots ships randomly within the 2D array, it ensures all ships are
+    placed in a valid position and there is no ships overlapping
+     */
     public void placeBotShips() {
         Random random = new Random();
         Integer[] shipSizes = {5, 4, 3, 3, 2};
@@ -101,7 +109,9 @@ public class BotLogic extends BattleshipGameBase<BattleshipGameBase.ShipData> {
         }
     }
 
-    //Set up the bots array
+    /*
+    Create the 2D array to store the bots game information
+     */
     public void createBotArray(int column, int row) {
         //Create the gameGrid[] the same size as the game grid
         for (int c = 0; c < column; c++) {
@@ -116,5 +126,4 @@ public class BotLogic extends BattleshipGameBase<BattleshipGameBase.ShipData> {
             }
         }
     }
-
 }

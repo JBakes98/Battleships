@@ -24,7 +24,6 @@ public class GridDraw extends View {
     Paint mGridPaint, hitMark, shipMark, emptyMark, missMark, placementMark;
     float canvasWidth;
     int rowCount, colCount;
-
     static PlayerLogic mPlayerGame = new PlayerLogic(columns, rows, ships);
     static  BotLogic mBotGame = new BotLogic(columns, rows, ships);
 
@@ -39,6 +38,9 @@ public class GridDraw extends View {
         mGestureDetector = new GestureDetector(context, new GridDraw.MyGestureListener());
     }
 
+    /*
+    A method to initialise all  of the board variables
+     */
     public void initialise() {
 
         mGridPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -80,6 +82,12 @@ public class GridDraw extends View {
             return true;
         }
 
+        /*
+        Method that calculates the coordinates that the user touched and ensures that it is a valid
+        position in the grid, if it is it passes the coordinates to the currentGuessAt method.
+        It then generates the bots random go. The method will also run the checkForWinner method
+        to see if the player or bot have won the game from one of their shots.
+         */
         public boolean onSingleTapUp(MotionEvent ev) {
 
             // Get location of touch
